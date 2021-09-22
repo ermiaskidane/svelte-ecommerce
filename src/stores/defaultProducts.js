@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable, derived} from "svelte/store";
 import localProducts from "../localProducts"
 
 const store = writable(flattenProducts([...localProducts]));
@@ -7,6 +7,7 @@ const store = writable(flattenProducts([...localProducts]));
 // set
 // update
 
+// flattened function
 function flattenProducts(data) {
     return data.map(item => {
         let image = item.image.url;
@@ -14,6 +15,12 @@ function flattenProducts(data) {
     })
 }
 
+// featured store
+export const featuredStore = derived(store, $featured => {
+    // console.log("hello from derived");
+    // console.log($featured)
+    return $featured.filter(item => item.featured === true)
+})
 export default store;
 
 // import { writable } from "svelte/store";

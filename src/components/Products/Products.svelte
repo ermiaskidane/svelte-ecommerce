@@ -1,25 +1,35 @@
 <script>
-    import { onMount, onDestroy } from "svelte";
+    // import { onMount, onDestroy } from "svelte";
+    export let title = "";
     import products from "../../stores/defaultProducts";
+    import Product from "./Product.svelte"
+    import Loading from "../Loading.svelte"
     // import localProducts from "../../localProducts";
     // console.log(products);
-    let unsubscribe;
+    // let unsubscribe;
 
-    let localProducts = [];
+    // let localProducts = [];
 
-    onMount(() => {
-        unsubscribe = products.subscribe(value => {
-            console.log("subscribed")
+    // onMount(() => {
+    //     unsubscribe = products.subscribe(value => {
+    //         console.log("subscribed")
             
-            localProducts = value;
-        })
-    })
+    //         localProducts = value;
+    //     })
+    // })
 
-    onDestroy(() => {
-        unsubscribe()
-    })
+    // onDestroy(() => {
+    //     unsubscribe()
+    // })
 </script>
-<h1>hello from products component</h1>
-{#each localProducts as product}
-    <h2>{product.title}</h2>
-{/each}
+
+<section class="section">
+    <h2 class="section-title">{title}</h2>
+    <div class="products-center">
+        {#each $products as product (product.id)}
+            <Product {product}/>
+        {:else}
+            <Loading/>
+        {/each}
+    </div>
+</section>
