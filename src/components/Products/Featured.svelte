@@ -19,5 +19,5 @@
             <Product {product}/>
         {/each}
     </div>
-</section>
+</section> 
 {/if}
