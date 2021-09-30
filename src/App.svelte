@@ -14,11 +14,16 @@
 	// components
 	import Navbar from "./components/Navbar/Navbar.svelte";
 	import Sidebar from "./components/Navbar/Sidebar.svelte";
+	
+	//global Store
+	import globalStore from "./stores/globalStore";
 </script>
 
 <Router>
 	<Navbar />
-	<Sidebar />
+	{#if $globalStore.sidebar}
+		<Sidebar />
+	{/if}
 	<!-- <nav class="navbar">
 		<Link to="/">Home</Link>
 		<Link to="/about">About</Link>
