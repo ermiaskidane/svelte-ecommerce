@@ -3,7 +3,6 @@
     import BigNavbar from "./BigNavbar.svelte";
     import globalStore from "../../stores/globalStore"
     let screenWidth;
-
     $: if (screenWidth > 992) {
         globalStore.toggleItem("sidebar", false)
     }
