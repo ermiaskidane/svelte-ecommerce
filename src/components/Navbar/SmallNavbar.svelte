@@ -7,7 +7,7 @@
     import globalStore from "../../stores/globalStore"
     let openSidebar = globalStore.toggleItem;
 </script>
-
+ 
 <nav class="navbar">
     <div class="nav-center">
         <!-- sidebar toggle -->
