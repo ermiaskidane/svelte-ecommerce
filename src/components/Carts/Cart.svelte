@@ -4,7 +4,8 @@
     import { link } from "svelte-routing";
 
     import ItemList from "./ItemsList.svelte"
-    let user = true;
+    import user from "../../stores/user";
+    // let user = true;
 </script>
 
 <div class="cart-overlay" transition:blur>
@@ -26,7 +27,7 @@
             <!-- end of cart items -->
             <!-- cart footer -->
             <div class="cart-footer">
-                {#if user}
+                {#if $user.jwt}
                 <a href="/checkout" 
                 use:link 
                 class="bnt btn-primary btn-block"
