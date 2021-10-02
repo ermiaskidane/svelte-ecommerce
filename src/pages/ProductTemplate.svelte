@@ -3,7 +3,7 @@
     export let location;
     // console.log(location)
     //global store
-
+    import { addToCart } from "../stores/cart";
     import products from "../stores/defaultProducts";
     import Loading from "../components/Loading.svelte";
     import globalStore from "../stores/globalStore"
@@ -32,6 +32,7 @@
             <h2>${product.price}</h2>
             <p>{product.description}</p>
             <button class="btn btn-primary btn-block" on:click={() => {
+                addToCart(product)
                 globalStore.toggleItem("cart", true)
             }}> add to cart</button>
         </article>
